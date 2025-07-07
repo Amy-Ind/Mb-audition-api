@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "audition-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

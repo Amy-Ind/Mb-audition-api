@@ -15,6 +15,7 @@ spring:
       probability: 1.0
 server:
   max-http-request-header-size: 16KB
+  port: 8088
 management:
   tracing:
     sampling:
@@ -22,7 +23,16 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*' #TODO enable only info and health for security purposes. Consider that we may want to still access other actuator endpoints securely.
+        include: health, info, metrics, env, loggers
+  endpoint:
+    metrics:
+      show-details: when-authorized
+    env:
+      show-details: when-authorized
+    loggers:
+      show-details: when-authorized
+
+  #TODO enable only info and health for security purposes. Consider that we may want to still access other actuator endpoints securely. -Done
 logging:
   pattern:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
